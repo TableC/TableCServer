@@ -1,0 +1,16 @@
+server:
+  applicationConnectors:
+  - type: http
+    port: 8080
+
+logging:
+  level: INFO
+  loggers:
+    com.jointablec: DEBUG
+
+database:
+  driverClass: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost/TableC
+  user: root
+  properties:
+    serverTimezone: UTC
