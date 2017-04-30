@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+<changeSet id="1" author="shawnrc">
+  <createTable tableName="User">
+    <column name="id" type="INT UNSIGNED">
+      <constraints nullable="false" primaryKey="true"/>
+    </column>
+    <column name="firstName" type="VARCHAR(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
+      <constraints nullable="false"/>
+    </column>
+    <column name="lastName" type="VARCHAR(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
+      <constraints nullable="false" />
+    </column>
+    <column name="email" type="VARCHAR(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
+      <constraints nullable="false"/>
+    </column>
+    <column name="age" type="TINYINT UNSIGNED" />
+    <column name="bio" type="VARCHAR(255) CHARACTER SET utf8mb4" />
+    <column name="school" type="VARCHAR(63)  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
+      <constraints nullable="false"/>
+    </column>
+    <column name="avatarUrl" type="VARCHAR(255)" />
+  </createTable>
+  </changeSet>
+  <changeSet id="2" author="shawnrc">
+    <createTable tableName="Party">
+      <column name="id" type="INT UNSIGNED">
+        <constraints nullable="false" primaryKey="true" />
+      </column>
+      <column name="userId" type="INT UNSIGNED">
+        <constraints nullable="false" foreignKeyName="User(id)" />
+      </column>
+      <column name="seats" type="TINYINT UNSIGNED">
+        <constraints nullable="false" />
+      </column>
+      <column name="startTime" type="BIGINT UNSIGNED">
+        <constraints nullable="false"/>
+      </column>
+      <column name="endTime" type="BIGINT UNSIGNED">
+        <constraints nullable="false" />
+      </column>
+      <column name="title" type="VARCHAR(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
+        <constraints nullable="false" />
+      </column>
+      <column name="simpleLocation" type="VARCHAR(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet id="3" author="shawnrc">
+    <createTable tableName="PartyTopic">
+      <column name="partyId" type="INT UNSIGNED">
+        <constraints nullable="false" foreignKeyName="Party(id)" primaryKey="true"/>
+      </column>
+      <column name="name" type="VARCHAR(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

@@ -22,5 +22,6 @@
     <orderEntry type="library" name="Maven: com.google.guava:guava:21.0" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-assets:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.7" level="project" />
+    <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-migrations:1.1.0-SNAPSHOT" level="project" />
   </component>
 </module>

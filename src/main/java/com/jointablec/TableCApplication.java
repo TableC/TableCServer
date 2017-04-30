@@ -5,7 +5,9 @@ import com.jointablec.db.PartyManager;
 import com.jointablec.resources.PartyResource;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
+import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi.DBIFactory;
+import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
@@ -23,6 +25,12 @@ public class TableCApplication extends Application<TableCConfiguration> {
 
   @Override
   public void initialize(final Bootstrap<TableCConfiguration> bootstrap) {
+    bootstrap.addBundle(new MigrationsBundle<TableCConfiguration>() {
+      @Override
+      public DataSourceFactory getDataSourceFactory(TableCConfiguration configuration) {
+        return configuration.getDataSourceFactory();
+      }
+    });
     bootstrap.addBundle(new AssetsBundle(
         "/assets",
         "/",
